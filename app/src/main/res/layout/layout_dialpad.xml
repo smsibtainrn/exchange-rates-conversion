@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/dialpadCL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <com.smsrn.exchangerate.utils.custom.DialPadNumber
+            android:id="@+id/dpnOne"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/bg_dial_pad_selector"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:dpn_digit="1"
+            app:layout_constraintHeight_percent="0.17"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/guideline"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.17" />
+
+        <com.smsrn.exchangerate.utils.custom.DialPadNumber
+            android:id="@+id/dpnTwo"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/bg_dial_pad_selector"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:dpn_digit="2"
+            app:layout_constraintHeight_percent="0.17"
+            app:layout_constraintLeft_toLeftOf="@id/guideline"
+            app:layout_constraintRight_toRightOf="@+id/guideline"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.17" />
+
+        <com.smsrn.exchangerate.utils.custom.DialPadNumber
+            android:id="@+id/dpnThree"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/bg_dial_pad_selector"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:dpn_digit="3"
+            app:layout_constraintHeight_percent="0.17"
+            app:layout_constraintLeft_toRightOf="@+id/guideline"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintWidth_percent="0.17" />
+
+
+        <com.smsrn.exchangerate.utils.custom.DialPadNumber
+            android:id="@+id/dpnFour"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_dial_pad_selector"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:dpn_digit="4"
+            app:layout_constraintHeight_percent="0.17"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/dpnOne"
+            app:layout_constraintWidth_percent="0.17" />
+
+        <com.smsrn.exchangerate.utils.custom.DialPadNumber
+            android:id="@+id/dpnFive"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_dial_pad_selector"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:dpn_digit="5"
+            app:layout_constraintHeight_percent="0.17"
+            app:layout_constraintLeft_toLeftOf="@id/guideline"
+            app:layout_constraintRight_toRightOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/dpnTwo"
+            app:layout_constraintWidth_percent="0.17" />
+
+        <com.smsrn.exchangerate.utils.custom.DialPadNumber
+            android:id="@+id/dpnSix"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_dial_pad_selector"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:dpn_digit="6"
+            app:layout_constraintHeight_percent="0.17"
+            app:layout_constraintLeft_toRightOf="@+id/guideline"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dpnThree"
+            app:layout_constraintWidth_percent="0.17" />
+
+        <com.smsrn.exchangerate.utils.custom.DialPadNumber
+            android:id="@+id/dpnSeven"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_dial_pad_selector"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:dpn_digit="7"
+            app:layout_constraintHeight_percent="0.17"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/dpnFour"
+            app:layout_constraintWidth_percent="0.17" />
+
+        <com.smsrn.exchangerate.utils.custom.DialPadNumber
+            android:id="@+id/dpnEight"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_dial_pad_selector"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:dpn_digit="8"
+            app:layout_constraintHeight_percent="0.17"
+            app:layout_constraintLeft_toLeftOf="@id/guideline"
+            app:layout_constraintRight_toRightOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/dpnFive"
+            app:layout_constraintWidth_percent="0.17" />
+
+        <com.smsrn.exchangerate.utils.custom.DialPadNumber
+            android:id="@+id/dpnNine"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_dial_pad_selector"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:dpn_digit="9"
+            app:layout_constraintHeight_percent="0.17"
+            app:layout_constraintLeft_toRightOf="@+id/guideline"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dpnSix"
+            app:layout_constraintWidth_percent="0.17" />
+
+
+        <com.smsrn.exchangerate.utils.custom.DialPadNumber
+            android:id="@+id/dpnDot"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_dial_pad_selector"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:dpn_digit="."
+            app:layout_constraintHeight_percent="0.17"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/dpnSeven"
+            app:layout_constraintWidth_percent="0.17" />
+
+        <com.smsrn.exchangerate.utils.custom.DialPadNumber
+            android:id="@+id/dpnZero"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_dial_pad_selector"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:dpn_digit="0"
+            app:layout_constraintHeight_percent="0.17"
+            app:layout_constraintLeft_toLeftOf="@id/guideline"
+            app:layout_constraintRight_toRightOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/dpnEight"
+            app:layout_constraintWidth_percent="0.17" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgViewErase"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:padding="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_pad_backspace"
+            app:layout_constraintBottom_toBottomOf="@id/dpnZero"
+            app:layout_constraintEnd_toEndOf="@id/dpnNine"
+            app:layout_constraintStart_toStartOf="@+id/dpnNine"
+            app:layout_constraintTop_toTopOf="@id/dpnZero" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

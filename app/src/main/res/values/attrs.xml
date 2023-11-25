@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="DialPadNumber">
+        <attr name="dpn_digit" format="string" />
+        <attr name="dpn_characters" format="string" />
+    </declare-styleable>
+
+</resources>
