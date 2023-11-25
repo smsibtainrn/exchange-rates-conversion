@@ -1,11 +1,9 @@
 package com.smsrn.exchangerate.data.source.local
 
-import com.smsrn.exchangerate.data.mapper.domainEntity.ExchangeRateDomainEntityMapper
 import com.smsrn.exchangerate.data.repository.ExchangeRateDataSource
 import com.smsrn.exchangerate.data.source.local.db.ExchangeRatesDao
 import com.smsrn.exchangerate.data.source.local.entity.ExchangeRateEntity
 import com.smsrn.exchangerate.data.source.local.preference.Preferences
-import com.smsrn.exchangerate.domain.model.ExchangeRate
 import javax.inject.Inject
 
 
@@ -18,8 +16,10 @@ class ExchangeRateLocalDataSourceImpl @Inject constructor(
     private val exchangeRatesDao: ExchangeRatesDao,
 ) : ExchangeRateDataSource {
     override fun saveExchangeRate(exchangeRate: ExchangeRateEntity) {
-        exchangeRatesDao.insert(exchangeRate)
-        setLastCacheTime(System.currentTimeMillis())
+        if (isExpired()) {
+            exchangeRatesDao.insert(exchangeRate)
+            setLastCacheTime(System.currentTimeMillis())
+        }
     }
 
     override suspend fun getExchangeRate(currencyCode: String): ExchangeRateEntity {
@@ -46,6 +46,6 @@ class ExchangeRateLocalDataSourceImpl @Inject constructor(
         /**
          * Expiration time set to 30 minutes
          */
-        const val EXPIRATION_TIME = (30 * 1000).toLong()
+        const val EXPIRATION_TIME = (30 * 60 * 1000).toLong()
     }
 }

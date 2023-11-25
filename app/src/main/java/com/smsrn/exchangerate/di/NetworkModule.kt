@@ -1,16 +1,12 @@
 package com.smsrn.exchangerate.di
 
-import android.content.Context
 import com.smsrn.exchangerate.BuildConfig
 import com.smsrn.exchangerate.data.source.remote.service.ExchangeRateService
 import com.smsrn.exchangerate.domain.network.ApiGatewayProtocol
-import com.smsrn.exchangerate.network.OnUnauthorizedEvent
 import com.smsrn.exchangerate.network.Protocol
-import com.smsrn.exchangerate.network.RequestAdapter
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -31,24 +27,11 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideAuthService(
-        @ApplicationContext appContext: Context,
-        protocol: ApiGatewayProtocol
-    ): ExchangeRateService =
-        createServiceWithProtocol(appContext, protocol, ExchangeRateService::class.java)
+    fun provideAuthService(protocol: ApiGatewayProtocol): ExchangeRateService =
+        createServiceWithProtocol(protocol, ExchangeRateService::class.java)
 
     companion object {
-        fun <T : Any> createServiceWithProtocol(
-            context: Context, protocol: Protocol, serviceName: Class<T>
-        ): T {
-            protocol.unAuthorizedEvent = object : OnUnauthorizedEvent {
-                override fun onUnauthorized() {
-                    if (context is OnUnauthorizedEvent) {
-                        context.onUnauthorized()
-                    }
-                }
-            }
-
+        fun <T : Any> createServiceWithProtocol(protocol: Protocol, serviceName: Class<T>): T {
             val client = OkHttpClient.Builder().apply {
                 if (BuildConfig.DEBUG) {
                     val logging = HttpLoggingInterceptor()
@@ -63,7 +46,6 @@ class NetworkModule {
 
             val retrofit = Retrofit.Builder().apply {
                 client(client)
-                addCallAdapterFactory(RequestAdapter.Factory(protocol))
                 addConverterFactory(GsonConverterFactory.create())
                 addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 baseUrl(protocol.baseURL)

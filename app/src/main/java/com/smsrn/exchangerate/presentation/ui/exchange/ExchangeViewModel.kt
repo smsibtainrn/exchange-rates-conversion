@@ -2,25 +2,14 @@ package com.smsrn.exchangerate.presentation.ui.exchange
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
-import com.smsrn.exchangerate.core.BaseViewModel
 import com.smsrn.exchangerate.data.source.local.entity.ExchangeRateEntity
 import com.smsrn.exchangerate.domain.interactor.GetExchangeRatesUseCase
-import com.smsrn.exchangerate.domain.model.ExchangeRate
-import com.smsrn.exchangerate.domain.repository.ExchangeRateRepository
 import com.smsrn.exchangerate.network.Response
-import com.smsrn.exchangerate.utils.CoroutineContextProvider
-import com.smsrn.exchangerate.utils.Utils.getDate
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.onCompletion
-import java.util.*
+import kotlinx.coroutines.launch
 import javax.inject.Inject
-import kotlin.collections.ArrayList
 
 
 /**
@@ -35,6 +24,7 @@ class ExchangeViewModel @Inject constructor(
 
     var exchangeRates = MutableLiveData<Response<ExchangeRateEntity>>()
     val currencies = MutableLiveData<List<String>>()
+    var amount = MutableLiveData<String>()
     var selectedCurrency = MutableLiveData<String?>()
 
     init {

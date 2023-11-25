@@ -1,8 +1,7 @@
 package com.smsrn.exchangerate.data.source.remote.service
 
 import com.smsrn.exchangerate.BuildConfig
-import com.smsrn.exchangerate.domain.model.ExchangeRate
-import com.smsrn.exchangerate.network.Request
+import com.smsrn.exchangerate.domain.models.ExchangeRate
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

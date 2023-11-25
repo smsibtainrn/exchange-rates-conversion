@@ -1,7 +1,6 @@
 package com.smsrn.exchangerate.data.source
 
 import com.smsrn.exchangerate.data.repository.ExchangeRateDataSource
-import com.smsrn.exchangerate.data.repository.ExchangeRateLocalDataSource
 import com.smsrn.exchangerate.data.source.local.ExchangeRateLocalDataSourceImpl
 import com.smsrn.exchangerate.data.source.remote.ExchangeRateRemoteDataSourceImpl
 import javax.inject.Inject
@@ -23,11 +22,7 @@ class ExchangeRateDataSourceFactory @Inject constructor(
         }
     }
 
-    fun getLocalDataSource(): ExchangeRateDataSource {
-        return exchangeRateLocalDataSource
-    }
+    fun getLocalDataSource(): ExchangeRateDataSource = exchangeRateLocalDataSource
 
-    fun getRemoteDataSource(): ExchangeRateDataSource {
-        return exchangeRateRemoDataSource
-    }
+    fun getRemoteDataSource(): ExchangeRateDataSource = exchangeRateRemoDataSource
 }

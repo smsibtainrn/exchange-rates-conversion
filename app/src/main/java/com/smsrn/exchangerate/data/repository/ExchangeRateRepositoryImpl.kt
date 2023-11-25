@@ -1,14 +1,7 @@
 package com.smsrn.exchangerate.data.repository
 
 import com.smsrn.exchangerate.data.source.ExchangeRateDataSourceFactory
-import com.smsrn.exchangerate.data.source.local.db.ExchangeRatesDao
-import com.smsrn.exchangerate.data.source.local.entity.ExchangeRateEntity
-import com.smsrn.exchangerate.data.source.local.preference.Preferences
-import com.smsrn.exchangerate.data.source.remote.service.ExchangeRateService
-import com.smsrn.exchangerate.domain.model.ExchangeRate
 import com.smsrn.exchangerate.domain.repository.ExchangeRateRepository
-import com.smsrn.exchangerate.network.Response
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
@@ -21,10 +14,15 @@ class ExchangeRateRepositoryImpl @Inject constructor(
     private val exchangeRateSourceFactory: ExchangeRateDataSourceFactory,
 ) : ExchangeRateRepository {
 
+    override suspend fun fetchHistoricalExchangeRates(currencyCode: String) = flow {
+        emit(exchangeRateSourceFactory.getLocalDataSource().getExchangeRate(currencyCode))
+    }
+
     override suspend fun fetchHistoricalExchangeRates(currencyCode: String, date: String) = flow {
         val isCache =
             exchangeRateSourceFactory.getLocalDataSource().isCached(currencyCode = currencyCode)
-        val exchangeRate = exchangeRateSourceFactory.getDataStore(isCache).getExchangeRate(currencyCode)
+        val exchangeRate =
+            exchangeRateSourceFactory.getDataStore(isCache).getExchangeRate(currencyCode)
         exchangeRateSourceFactory.getLocalDataSource().saveExchangeRate(exchangeRate)
         emit(exchangeRate)
     }

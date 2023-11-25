@@ -1,9 +1,7 @@
 package com.smsrn.exchangerate.domain.interactor
 
-import com.smsrn.exchangerate.data.source.local.entity.ExchangeRateEntity
 import com.smsrn.exchangerate.domain.repository.ExchangeRateRepository
 import com.smsrn.exchangerate.utils.Utils
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 
@@ -14,9 +12,12 @@ import javax.inject.Inject
 class GetExchangeRatesUseCase @Inject constructor(
     private val exchangeRateRepository: ExchangeRateRepository
 ) {
-    suspend operator fun invoke(currencyCode: String): Flow<ExchangeRateEntity> =
-        exchangeRateRepository.fetchHistoricalExchangeRates(
-            currencyCode,
-            Utils.getDate(-1)
-        )
+    suspend operator fun invoke(currencyCode: String, onlyFromCache: Boolean = false) =
+        if (onlyFromCache) {
+            exchangeRateRepository.fetchHistoricalExchangeRates(currencyCode)
+        } else {
+            exchangeRateRepository.fetchHistoricalExchangeRates(
+                currencyCode, Utils.getDate(-1)
+            )
+        }
 }

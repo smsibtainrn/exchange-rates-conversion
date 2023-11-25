@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Exchange Rate</string>
     <string name="amount">Amount</string>
-    <string name="enter_amount">Enter Amount</string>
     <string name="currency">Currency</string>
     <string name="view_conversions">View Conversions</string>
+    <string name="amount_invalid_message">Please enter valid amount</string>
+    <string name="amount_empty">Please enter amount</string>
 </resources>

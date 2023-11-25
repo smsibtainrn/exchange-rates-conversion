@@ -4,7 +4,7 @@ import com.smsrn.exchangerate.data.mapper.domainEntity.ExchangeRateDomainEntityM
 import com.smsrn.exchangerate.data.repository.ExchangeRateDataSource
 import com.smsrn.exchangerate.data.source.local.entity.ExchangeRateEntity
 import com.smsrn.exchangerate.data.source.remote.service.ExchangeRateService
-import com.smsrn.exchangerate.domain.model.ExchangeRate
+import com.smsrn.exchangerate.domain.models.ExchangeRate
 import com.smsrn.exchangerate.utils.Utils
 import javax.inject.Inject
 

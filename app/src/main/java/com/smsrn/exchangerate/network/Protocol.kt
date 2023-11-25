@@ -2,9 +2,6 @@ package com.smsrn.exchangerate.network
 
 import android.util.Log
 import com.smsrn.exchangerate.BuildConfig
-import com.smsrn.exchangerate.network.ProtocolException.ERROR_CONNECTION_FAILED
-import com.smsrn.exchangerate.network.ProtocolException.ERROR_CONNECTION_TIME_OUT
-import com.smsrn.exchangerate.network.ProtocolException.ERROR_UNKNOWN_HOST
 import okhttp3.Interceptor
 import okhttp3.Protocol
 import okhttp3.Response
@@ -21,15 +18,6 @@ abstract class Protocol : Interceptor {
     open val readTimeOutMs: Long = 60000
     open val writeTimeOutMs: Long = 60000
     open val connectionTimeOutMs: Long = 60000
-
-    var unAuthorizedEvent: OnUnauthorizedEvent? = null
-    open var suppressUnAuthorizedPropagation: Boolean = false
-
-    open val exceptions: HashMap<Int, String>? = null
-
-    open val errorConnectionTimeout: String = ERROR_CONNECTION_TIME_OUT
-    open val errorConnectionFailed: String = ERROR_CONNECTION_FAILED
-    open val errorUnknownHost: String = ERROR_UNKNOWN_HOST
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
@@ -55,11 +43,4 @@ abstract class Protocol : Interceptor {
     }
 
     open fun getHeaders(): Map<String, String>? = null
-
-    open fun onUnauthorized(request: Request<*>, parsedErrorMessage: String) {}
-
-    fun onUnauthorized() {
-        if (!suppressUnAuthorizedPropagation)
-            unAuthorizedEvent?.onUnauthorized()
-    }
 }

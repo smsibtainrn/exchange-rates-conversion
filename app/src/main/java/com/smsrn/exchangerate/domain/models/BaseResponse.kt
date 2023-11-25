@@ -1,4 +1,4 @@
-package com.smsrn.exchangerate.domain.model
+package com.smsrn.exchangerate.domain.models
 
 
 /**
