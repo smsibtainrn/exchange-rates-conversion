@@ -1,4 +1,4 @@
-package com.smsrn.exchangerate.network
+package com.smsrn.exchangerate.core.network
 
 /**
  * Created by Sibtain Raza on 11/22/2023.

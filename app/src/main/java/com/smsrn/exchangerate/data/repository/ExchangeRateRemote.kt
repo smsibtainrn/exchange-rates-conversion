@@ -5,8 +5,8 @@ import com.smsrn.exchangerate.data.source.local.entity.ExchangeRateEntity
 
 /**
  * Created by Sibtain Raza on 11/24/2023.
- * sraza@adnocdistribution.ae
+ * smsibtainrn@gmail.com
  */
-interface ExchangeRateRemoteDataSource {
-    fun getExchangeRate(): ExchangeRateEntity
+interface ExchangeRateRemote {
+    suspend fun getExchangeRate(currencyCode: String): ExchangeRateEntity
 }

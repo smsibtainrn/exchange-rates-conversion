@@ -3,7 +3,7 @@ package com.smsrn.exchangerate.utils
 
 /**
  * Created by Sibtain Raza on 11/23/2023.
- * sraza@adnocdistribution.ae
+ * smsibtainrn@gmail.com
  */
 object Constants {
 

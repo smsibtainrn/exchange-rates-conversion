@@ -11,7 +11,7 @@ import java.util.*
 
 /**
  * Created by Sibtain Raza on 11/23/2023.
- * sraza@adnocdistribution.ae
+ * smsibtainrn@gmail.com
  */
 object Utils {
 

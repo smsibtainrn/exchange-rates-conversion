@@ -3,9 +3,9 @@ package com.smsrn.exchangerate.presentation.ui.exchange
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.smsrn.exchangerate.core.network.Response
 import com.smsrn.exchangerate.data.source.local.entity.ExchangeRateEntity
 import com.smsrn.exchangerate.domain.interactor.GetExchangeRatesUseCase
-import com.smsrn.exchangerate.network.Response
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch

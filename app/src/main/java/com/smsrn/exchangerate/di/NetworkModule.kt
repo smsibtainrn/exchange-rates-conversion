@@ -1,9 +1,9 @@
 package com.smsrn.exchangerate.di
 
 import com.smsrn.exchangerate.BuildConfig
+import com.smsrn.exchangerate.core.network.Protocol
 import com.smsrn.exchangerate.data.source.remote.service.ExchangeRateService
 import com.smsrn.exchangerate.domain.network.ApiGatewayProtocol
-import com.smsrn.exchangerate.network.Protocol
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,7 +19,7 @@ import javax.inject.Singleton
 
 /**
  * Created by Sibtain Raza on 11/22/2023.
- * sraza@adnocdistribution.ae
+ * smsibtainrn@gmail.com
  */
 @Module
 @InstallIn(SingletonComponent::class)

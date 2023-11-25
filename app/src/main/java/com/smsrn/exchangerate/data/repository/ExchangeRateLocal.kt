@@ -5,12 +5,12 @@ import com.smsrn.exchangerate.data.source.local.entity.ExchangeRateEntity
 
 /**
  * Created by Sibtain Raza on 11/24/2023.
- * sraza@adnocdistribution.ae
+ * smsibtainrn@gmail.com
  */
-interface ExchangeRateLocalDataSource {
+interface ExchangeRateLocal {
     fun saveExchangeRate(exchangeRate: ExchangeRateEntity)
-    fun getExchangeRate(): ExchangeRateEntity
-    fun isCached(): Boolean
+    suspend fun getExchangeRate(currencyCode: String): ExchangeRateEntity
+    fun isCached(currencyCode: String): Boolean
     fun setLastCacheTime(lastCache: Long)
     fun isExpired(): Boolean
 }

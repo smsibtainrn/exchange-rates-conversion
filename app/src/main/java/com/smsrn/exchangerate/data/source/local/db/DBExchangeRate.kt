@@ -9,7 +9,7 @@ import com.smsrn.exchangerate.data.source.local.entity.ExchangeRateEntity
 
 /**
  * Created by Sibtain Raza on 11/23/2023.
- * sraza@adnocdistribution.ae
+ * smsibtainrn@gmail.com
  */
 
 @Database(entities = [ExchangeRateEntity::class], version = 1, exportSchema = false)

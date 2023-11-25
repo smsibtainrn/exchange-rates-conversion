@@ -7,7 +7,7 @@ import com.smsrn.exchangerate.R
 
 /**
  * Created by Sibtain Raza on 5/4/2023.
- * sraza@adnocdistribution.ae
+ * smsibtainrn@gmail.com
  */
 object LoaderDialog {
     private var dialog: Dialog? = null

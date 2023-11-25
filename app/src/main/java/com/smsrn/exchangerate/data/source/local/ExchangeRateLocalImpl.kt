@@ -1,20 +1,15 @@
 package com.smsrn.exchangerate.data.source.local
 
-import com.smsrn.exchangerate.data.repository.ExchangeRateDataSource
+import com.smsrn.exchangerate.data.repository.ExchangeRateLocal
 import com.smsrn.exchangerate.data.source.local.db.ExchangeRatesDao
 import com.smsrn.exchangerate.data.source.local.entity.ExchangeRateEntity
 import com.smsrn.exchangerate.data.source.local.preference.Preferences
 import javax.inject.Inject
 
-
-/**
- * Created by Sibtain Raza on 11/24/2023.
- * sraza@adnocdistribution.ae
- */
-class ExchangeRateLocalDataSourceImpl @Inject constructor(
+class ExchangeRateLocalImpl @Inject constructor(
     private val preferences: Preferences,
     private val exchangeRatesDao: ExchangeRatesDao,
-) : ExchangeRateDataSource {
+) : ExchangeRateLocal {
     override fun saveExchangeRate(exchangeRate: ExchangeRateEntity) {
         if (isExpired()) {
             exchangeRatesDao.insert(exchangeRate)

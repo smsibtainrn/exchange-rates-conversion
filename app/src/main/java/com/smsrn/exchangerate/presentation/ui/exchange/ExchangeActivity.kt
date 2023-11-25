@@ -5,8 +5,8 @@ import android.view.View
 import androidx.activity.viewModels
 import com.smsrn.exchangerate.R
 import com.smsrn.exchangerate.core.BaseActivity
+import com.smsrn.exchangerate.core.network.Response
 import com.smsrn.exchangerate.databinding.ActivityExchangeRateBinding
-import com.smsrn.exchangerate.network.Response
 import com.smsrn.exchangerate.presentation.ui.conversions.ConversionsActivity
 import com.smsrn.exchangerate.utils.Constants.IntentExtras.AMOUNT
 import com.smsrn.exchangerate.utils.Constants.IntentExtras.CURRENCY

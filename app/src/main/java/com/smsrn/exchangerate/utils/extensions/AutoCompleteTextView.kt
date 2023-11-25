@@ -9,7 +9,7 @@ import com.smsrn.exchangerate.presentation.adapters.DropDownAdapter
 
 /**
  * Created by Sibtain Raza on 11/23/2023.
- * sraza@adnocdistribution.ae
+ * smsibtainrn@gmail.com
  */
 
 fun AutoCompleteTextView.setSpinnerEntries(items: List<Any>?) {

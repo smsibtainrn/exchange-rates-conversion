@@ -1,7 +1,6 @@
-package com.smsrn.exchangerate.network
+package com.smsrn.exchangerate.core.network
 
 import android.util.Log
-import com.smsrn.exchangerate.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.Protocol
 import okhttp3.Response
@@ -25,13 +24,19 @@ abstract class Protocol : Interceptor {
         val requestBuilder =
             chain.request().newBuilder().method(chain.request().method, chain.request().body)
 
-        request.url.newBuilder()
-            .addQueryParameter("app_id", BuildConfig.EXCHANGE_RATE_API_KEY)
-            .build().apply { requestBuilder.url(this) }
-
         getHeaders()?.forEach {
             Log.d("HEADERS", "${it.key}:${it.value}")
             requestBuilder.addHeader(it.key, it.value)
+        }
+
+        getQueryParameters()?.let { parameters ->
+            with(request.url.newBuilder()) {
+                parameters.map {
+                    Log.d("QUERY_PARAMETERS", "${it.key}:${it.value}")
+                    addQueryParameter(it.key, it.value)
+                }
+                build().apply { requestBuilder.url(this) }
+            }
         }
 
         return try {
@@ -43,4 +48,5 @@ abstract class Protocol : Interceptor {
     }
 
     open fun getHeaders(): Map<String, String>? = null
+    open fun getQueryParameters(): Map<String, String>? = null
 }

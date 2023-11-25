@@ -1,26 +1,20 @@
 package com.smsrn.exchangerate.data.source.remote
 
-import com.smsrn.exchangerate.data.mapper.domainEntity.ExchangeRateDomainEntityMapper
 import com.smsrn.exchangerate.data.repository.ExchangeRateDataSource
+import com.smsrn.exchangerate.data.repository.ExchangeRateRemote
 import com.smsrn.exchangerate.data.source.local.entity.ExchangeRateEntity
-import com.smsrn.exchangerate.data.source.remote.service.ExchangeRateService
-import com.smsrn.exchangerate.domain.models.ExchangeRate
-import com.smsrn.exchangerate.utils.Utils
 import javax.inject.Inject
 
 
 /**
  * Created by Sibtain Raza on 11/24/2023.
- * sraza@adnocdistribution.ae
+ * smsibtainrn@gmail.com
  */
-class ExchangeRateRemoteDataSourceImpl @Inject constructor(
-    private val exchangeRateService: ExchangeRateService,
-    private val exchangeRateDomainEntityMapper: ExchangeRateDomainEntityMapper
+class ExchangeRateRemoteDataSource @Inject constructor(
+    private val exchangeRateRemote: ExchangeRateRemote
 ) : ExchangeRateDataSource {
     override suspend fun getExchangeRate(currencyCode: String): ExchangeRateEntity {
-        return exchangeRateDomainEntityMapper.toEntity(
-            exchangeRateService.fetchHistoricalExchangeRates(Utils.getDate(-1),currencyCode)
-        )
+        return exchangeRateRemote.getExchangeRate(currencyCode)
     }
 
     override fun saveExchangeRate(exchangeRate: ExchangeRateEntity) {

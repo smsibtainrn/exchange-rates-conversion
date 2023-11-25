@@ -1,18 +1,18 @@
 package com.smsrn.exchangerate.data.source
 
 import com.smsrn.exchangerate.data.repository.ExchangeRateDataSource
-import com.smsrn.exchangerate.data.source.local.ExchangeRateLocalDataSourceImpl
-import com.smsrn.exchangerate.data.source.remote.ExchangeRateRemoteDataSourceImpl
+import com.smsrn.exchangerate.data.source.local.ExchangeRateLocalDataSource
+import com.smsrn.exchangerate.data.source.remote.ExchangeRateRemoteDataSource
 import javax.inject.Inject
 
 
 /**
  * Created by Sibtain Raza on 11/24/2023.
- * sraza@adnocdistribution.ae
+ * smsibtainrn@gmail.com
  */
 class ExchangeRateDataSourceFactory @Inject constructor(
-    private val exchangeRateLocalDataSource: ExchangeRateLocalDataSourceImpl,
-    private val exchangeRateRemoDataSource: ExchangeRateRemoteDataSourceImpl
+    private val exchangeRateLocalDataSource: ExchangeRateLocalDataSource,
+    private val exchangeRateRemoteDataSource: ExchangeRateRemoteDataSource
 ) {
     fun getDataStore(isCached: Boolean): ExchangeRateDataSource {
         return if (isCached && !exchangeRateLocalDataSource.isExpired()) {
@@ -24,5 +24,5 @@ class ExchangeRateDataSourceFactory @Inject constructor(
 
     fun getLocalDataSource(): ExchangeRateDataSource = exchangeRateLocalDataSource
 
-    fun getRemoteDataSource(): ExchangeRateDataSource = exchangeRateRemoDataSource
+    fun getRemoteDataSource(): ExchangeRateDataSource = exchangeRateRemoteDataSource
 }

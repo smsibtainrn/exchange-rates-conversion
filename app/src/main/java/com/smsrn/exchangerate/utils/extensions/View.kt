@@ -5,7 +5,7 @@ import android.view.View
 
 /**
  * Created by Sibtain Raza on 11/23/2023.
- * sraza@adnocdistribution.ae
+ * smsibtainrn@gmail.com
  */
 
 fun View.setPaddingHorizontal(padding: Int) {

@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 /**
  * Created by Sibtain Raza on 11/25/2023.
- * sraza@adnocdistribution.ae
+ * smsibtainrn@gmail.com
  */
 class GetExchangeRatesUseCase @Inject constructor(
     private val exchangeRateRepository: ExchangeRateRepository
