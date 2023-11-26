@@ -31,7 +31,7 @@ class ExchangeViewModel @Inject constructor(
         fetchExchangeRates()
     }
 
-    private fun fetchExchangeRates() =
+    fun fetchExchangeRates() =
         viewModelScope.launch {
             exchangeRates.postValue(Response.Loading)
             getExchangeRatesUseCase.invoke("USD").catch {
