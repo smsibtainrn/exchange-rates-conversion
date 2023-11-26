@@ -1,5 +1,6 @@
 package com.smsrn.exchangerate.presentation.ui.exchange
 
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -26,6 +27,16 @@ class ExchangeViewModel @Inject constructor(
     val currencies = MutableLiveData<List<String>>()
     var amount = MutableLiveData<String>()
     var selectedCurrency = MutableLiveData<String?>()
+    val regex = Regex("^(0(\\.\\d{1,2})?|[1-9]\\d{0,5}(\\.\\d{1,2})?)$")
+
+    val isValidated = MediatorLiveData<Boolean>().apply {
+        addSource(amount) { value = validate() }
+        addSource(selectedCurrency) { value = validate() }
+    }
+
+    private fun validate(): Boolean {
+        return amount.value?.matches(regex) == true && selectedCurrency.value?.isNotEmpty() == true
+    }
 
     init {
         fetchExchangeRates()

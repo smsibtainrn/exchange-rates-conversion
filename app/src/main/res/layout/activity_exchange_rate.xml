@@ -77,7 +77,7 @@
             android:id="@+id/btnViewConversions"
             style="@style/filledButtonStyle"
             android:layout_marginTop="@dimen/_5sdp"
-            android:enabled="false"
+            android:enabled="@{viewModel.isValidated}"
             android:text="@string/view_conversions"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

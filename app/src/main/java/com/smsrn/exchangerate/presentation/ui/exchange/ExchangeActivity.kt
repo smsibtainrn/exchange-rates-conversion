@@ -21,7 +21,6 @@ class ExchangeActivity : BaseActivity<ActivityExchangeRateBinding>(), View.OnCli
 
     override fun getLayout(): Int = R.layout.activity_exchange_rate
     private val viewModel: ExchangeViewModel by viewModels()
-    private val regex = Regex("^(0(\\.\\d{1,2})?|[1-9]\\d{0,5}(\\.\\d{1,2})?)$")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,27 +41,15 @@ class ExchangeActivity : BaseActivity<ActivityExchangeRateBinding>(), View.OnCli
                 }
             }
         }
-
-        viewModel.amount.observe(this@ExchangeActivity) {
-            binding.btnViewConversions.isEnabled =
-                it.matches(regex) && !viewModel.selectedCurrency.value.isNullOrEmpty()
-        }
-
         setListeners()
     }
 
     private fun setListeners() {
         binding.btnViewConversions.setOnClickListener {
-            if (viewModel.amount.value.isNullOrEmpty()) {
-                showToast(R.string.amount_empty)
-            } else if (viewModel.amount.value?.matches(regex) != true) {
-                showToast(R.string.amount_invalid_message)
-            } else {
-                startActivity(ConversionsActivity::class, intentModifier = {
-                    putExtra(CURRENCY, viewModel.selectedCurrency.value)
-                    putExtra(AMOUNT, viewModel.amount.value?.toDouble())
-                })
-            }
+            startActivity(ConversionsActivity::class, intentModifier = {
+                putExtra(CURRENCY, viewModel.selectedCurrency.value)
+                putExtra(AMOUNT, viewModel.amount.value?.toDouble())
+            })
         }
 
         listOf(
@@ -88,9 +75,9 @@ class ExchangeActivity : BaseActivity<ActivityExchangeRateBinding>(), View.OnCli
                 val oldText = viewModel.amount.value ?: ""
                 val digit = view.digit
                 val newText = "$oldText$digit"
-                if (!oldText.contains(".") && digit == "." && regex.matches(oldText)) {
+                if (!oldText.contains(".") && digit == "." && viewModel.regex.matches(oldText)) {
                     viewModel.amount.value = newText
-                } else if (regex.matches(newText)) {
+                } else if (viewModel.regex.matches(newText)) {
                     viewModel.amount.value = newText
                 }
             }
